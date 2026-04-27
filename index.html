@@ -496,6 +496,36 @@ const articles = [
   }
 ];
 
+// --- PEGA ESTO JUSTO DEBAJO DE TU ARRAY DE ARTÍCULOS ---
+
+// Buscamos el contenedor donde van a ir los artículos (asegúrate de que en tu HTML haya un <div id="articles-grid"></div>)
+const grid = document.getElementById('articles-grid');
+
+// Si el contenedor existe, pintamos los artículos
+if (grid) {
+  articles.forEach(articulo => {
+    const cardHTML = `
+      <div style="background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+        <img src="${articulo.img}" alt="${articulo.title}" style="width: 100%; height: 250px; object-fit: cover;">
+        <div style="padding: 20px;">
+          <span style="background: #e0e7ff; color: #1e40af; padding: 5px 10px; border-radius: 20px; font-weight: bold; font-size: 0.8rem;">${articulo.tag}</span>
+          <h2 style="margin: 15px 0 10px 0; font-size: 1.8rem; color: #0f172a;">${articulo.title}</h2>
+          <div style="color: #64748b; font-size: 0.9rem; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
+            Por <strong>${articulo.author}</strong> | ${articulo.date}
+          </div>
+          <p style="font-size: 1.1rem; font-style: italic; color: #475569; margin-bottom: 20px; border-left: 3px solid #1e40af; padding-left: 15px;">${articulo.lead}</p>
+          <div style="color: #334155; line-height: 1.8; font-size: 1.05rem;">
+            ${articulo.body}
+          </div>
+        </div>
+      </div>
+    `;
+    grid.innerHTML += cardHTML;
+  });
+} else {
+  console.error("Falta el contenedor: No se encontró ningún elemento con el id 'articles-grid' en tu HTML.");
+}
+  
 // Función para limpiar el título y convertirlo en una URL amigable (slug)
 function slugify(text) {
   return text.toString().toLowerCase()
