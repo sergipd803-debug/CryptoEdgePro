@@ -348,19 +348,39 @@ By using our website, you hereby consent to our Privacy Protocol and agree to it
 
 <footer>
   <div class="container">
-    <div class="footer-grid">
+    <div class="footer-grid" style="grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; text-align: left;">
+      
       <div>
-        <div class="logo" style="color:#e2e8f0; cursor:pointer;" onclick="showPage('home')"><div class="logo-icon">₿</div>Crypto<span style="color:var(--accent3);">Edge</span> Pro</div>
-        <p style="margin-top:20px; font-size:15px; color:#94a3b8;">The leading global standard for decentralized intelligence.</p>
+        <div class="logo" style="color:#e2e8f0; cursor:pointer; margin-bottom: 20px;" onclick="showPage('home')">
+          <div class="logo-icon">₿</div>Crypto<span style="color:var(--accent3);">Edge</span> Pro
+        </div>
+        <p style="font-size:15px; color:#94a3b8; line-height: 1.6; max-width: 300px;">
+          Your number one source of verified intelligence on decentralized finance and institutional crypto trends.
+        </p>
       </div>
-      <a onclick="showPage('about')" style="color:#94a3b8; cursor:pointer;">About Us</a><br>
-      <div><h4 style="color:#e2e8f0; margin-bottom:25px;">Sectors</h4><a onclick="showCat('Bitcoin')" style="color:#94a3b8; cursor:pointer;">Bitcoin</a><br><a onclick="showCat('DeFi')" style="color:#94a3b8; cursor:pointer;">DeFi Ecosystems</a></div>
-      <div><h4 style="color:#e2e8f0; margin-bottom:25px;">Institutional</h4><a onclick="showPage('contact')" style="color:#94a3b8; cursor:pointer;">Access</a><br><a onclick="showPage('privacy')" style="color:#94a3b8; cursor:pointer;">Privacy Policy</a></div>
-      <div style="text-align: right;"><p style="font-size: 13px; color: #4a6080;">Data powered by EdgeNode Quantum API.</p></div>
+
+      <div>
+        <h4 style="color:#e2e8f0; margin-bottom:25px; font-family: var(--font-display);">Sections</h4>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <a onclick="showCat('Bitcoin')" style="color:#94a3b8; cursor:pointer;">Bitcoin Market</a>
+          <a onclick="showCat('DeFi')" style="color:#94a3b8; cursor:pointer;">DeFi Ecosystems</a>
+          <a onclick="showCat('Investing')" style="color:#94a3b8; cursor:pointer;">Global Investing</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="color:#e2e8f0; margin-bottom:25px; font-family: var(--font-display);">Legal</h4>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <a onclick="showPage('about')" style="color:#94a3b8; cursor:pointer;">About Us</a>
+          <a onclick="showPage('privacy')" style="color:#94a3b8; cursor:pointer;">Privacy Protocol</a>
+          <a onclick="showPage('cookies')" style="color:#94a3b8; cursor:pointer;">Cookie Notice</a>
+          <a onclick="showPage('terms')" style="color:#94a3b8; cursor:pointer;">Terms and Conditions</a>
+        </div>
+      </div>
     </div>
-    <div style="border-top:1px solid #1e2d4a; padding-top:30px; font-size:13px; color:#4a6080; display: flex; justify-content: space-between;">
-      <p>© 2026 CryptoEdge Pro Media Group.</p>
-      <span>Status: Fully Functional</span>
+
+    <div style="border-top:1px solid #1e2d4a; margin-top:50px; padding-top:30px; text-align: center;">
+      <p style="font-size:14px; color:#4a6080;">© 2026 CryptoEdge Pro Media. All rights reserved.</p>
     </div>
   </div>
 </footer>
