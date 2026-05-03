@@ -139,9 +139,8 @@
     footer { background: #0a0e1a; padding: 80px 0 40px; border-top: 1px solid #1e2d4a; margin-top: 100px; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 50px; }
 
-    /* ===== MOBILE RESPONSIVE - CORREGIDO ===== */
+   /* ===== MOBILE RESPONSIVE - LIMPIO Y CERRADO ===== */
     @media (max-width: 1024px) {
-      /* 1. Ajustes de layout para artículos */
       .article-layout { flex-direction: column !important; }
       .ad-sidebar-sticky { position: static !important; width: 100% !important; min-height: auto !important; margin-bottom: 20px !important; }
       
@@ -151,20 +150,15 @@
         padding: 0 !important; 
       }
 
-      /* 2. OCULTA EL HUECO DE 140PX (Esto arregla el pegado) */
-      .desktop-spacer { 
-        display: none !important; 
-      }
+      .desktop-spacer { display: none !important; }
 
-      /* 3. EMPUJA EL ICONO A LA DERECHA */
       #mobile-icon { 
         display: block !important; 
-        margin-left: auto; /* Lo manda a la esquina derecha */
-        padding-right: 10px; /* Un poco de margen con el borde */
+        margin-left: auto; 
+        padding-right: 10px; 
         font-size: 32px;
       }
 
-      /* 4. Menú móvil vertical */
       nav { 
         display: none; 
         flex-direction: column;
@@ -191,23 +185,22 @@
         margin: 0;
       }
 
-      /* 5. Cuadrícula a 1 columna en móvil */
       .articles-grid {
         grid-template-columns: 1fr !important;
         gap: 20px !important;
       }
 
+      /* Imagen en móvil: aquí sí le damos una altura fija para que no sea gigante */
+      .article-hero-img {
+        height: 250px !important;
+        object-fit: cover !important;
+        border-radius: 12px !important;
+      }
+
       h1 { font-size: 28px !important; }
       .container { padding: 0 16px !important; }
-    }
+    } /* AQUÍ SE CIERRA EL MEDIA 1024 */
 
-      /* Ajustes de texto para móvil */
-      h1 { font-size: 28px !important; }
-      .article-hero-img {
-        height: 250px !important; /* En móviles la queremos bajita */
-        border-radius: 12px !important;
-
-    /* Ajustes extra para pantallas muy pequeñas */
     @media (max-width: 480px) {
       h1 { font-size: 24px !important; }
       .article-card img { height: 180px !important; }
@@ -753,7 +746,7 @@ function openArticle(id, updateUrl = true) {
         <h1 style="font-family:'DM Serif Display', serif; font-size:48px; margin-bottom:20px; line-height:1.2; color:var(--text);">${art.title}</h1>
         <p style="color:var(--text3); font-size:14px; margin-bottom:30px;">Written by ${art.author} | Published ${art.date} | ${art.tag}</p>
         
-        <img src="${art.img}" class="article-hero-img" style="width:100%; height:auto; border-radius:18px; margin-bottom:30px; display:block;">
+<img src="${art.img}" class="article-hero-img" alt="${art.title}">
         
         <div class="article-content" style="color:var(--text); line-height:1.8; font-size:18px;">
           ${art.body}
