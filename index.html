@@ -106,10 +106,12 @@
     .section-title { font-family: var(--font-display); font-size: 28px; color: var(--white); display: flex; align-items: center; gap: 12px; }
     .section-title::before { content: ''; width: 5px; height: 30px; background: var(--accent); border-radius: 3px; }
 .articles-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+      display: grid !important; 
+      /* Aquí le decimos: "Crea tantas columnas como quepan, de mínimo 350px cada una" */
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)) !important; 
       gap: 30px; 
-      width: 100%; /* Añade esto para que no se colapse */
+      width: 100%;
+      margin: 0 auto;
     }
     .article-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: 0.4s; display: flex; flex-direction: column; }
     .article-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,95,163,0.15); }
@@ -283,8 +285,6 @@
 
 <div id="page-home" class="page active">
   <div class="container">
-    <div class="article-layout">
-      <div class="article-main">
         <div class="section-header">
           <div class="section-title">Latest Global Intelligence</div>
         </div>
