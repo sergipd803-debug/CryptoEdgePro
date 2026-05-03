@@ -722,19 +722,23 @@ function openArticle(id, updateUrl = true) {
   content.innerHTML = `
     <div class="article-layout">
       <div class="article-main">
-        <a onclick="showPage('home')" style="color:var(--accent); font-weight:700">← Back to Hub</a>
+        <a onclick="showPage('home')" style="color:var(--accent); font-weight:700; cursor:pointer;">← Back to Hub</a>
         <h1 style="font-family:'DM Serif Display', serif; font-size:48px; margin:20px 0; line-height:1.2;">${art.title}</h1>
         <p style="color:var(--text3); font-size:14px; margin-bottom:30px;">Written by ${art.author} | Published ${art.date} | ${art.tag}</p>
-        <img src="${art.img}" class="article-hero-img">
+        
+        <img src="${art.img}" class="article-hero-img" style="width:100%; border-radius:18px; margin-bottom:30px;">
+        
         <div class="article-content">${art.body}</div>
       </div>
-        <div style="margin-top:30px; padding:25px; background:var(--bg2); border-radius:15px; border:1px solid var(--border);">
-            <h4 style="color:var(--white); margin-bottom:15px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">2026 Trend Reports</h4>
+
+      <aside class="ad-sidebar-sticky">
+        <div style="padding:25px; background:var(--bg2); border-radius:15px; border:1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <h4 style="color:var(--white); margin-bottom:15px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid var(--accent); padding-bottom: 10px;">2026 Trend Reports</h4>
             <ul style="list-style:none; font-size:13px; color:var(--text2); line-height: 1.6;">
-                <li style="margin-bottom:12px;">• BTC $250K Projection</li>
-                <li style="margin-bottom:12px;">• Global CBDC Impact</li>
-                <li style="margin-bottom:12px;">• DePIN Sector Alpha</li>
-                <li>• Quantum Defense Guide</li>
+                <li style="margin-bottom:12px;"><a onclick="openArticle(0)" style="color:var(--text2); cursor:pointer;">• BTC $250K Projection</a></li>
+                <li style="margin-bottom:12px;"><a onclick="openArticle(5)" style="color:var(--text2); cursor:pointer;">• Global CBDC Impact</a></li>
+                <li style="margin-bottom:12px;"><a onclick="openArticle(2)" style="color:var(--text2); cursor:pointer;">• DePIN Sector Alpha</a></li>
+                <li><a onclick="openArticle(7)" style="color:var(--text2); cursor:pointer;">• Quantum Defense Guide</a></li>
             </ul>
         </div>
       </aside>
