@@ -55,10 +55,26 @@
     .ad-in-article { width: 100%; min-height: 250px; max-width: 728px; }
 
     /* ARTICLE LAYOUT */
-    .article-layout { display: flex; gap: 40px; margin-top: 40px; align-items: flex-start; }
-    .article-main { flex: 1; max-width: 850px; }
-    .ad-sidebar-sticky { position: -webkit-sticky; position: sticky; top: 100px; width: 300px; min-height: 600px; flex-shrink: 0; }
+   .article-layout { 
+      display: flex; 
+      gap: 40px; 
+      margin-top: 40px; 
+      align-items: flex-start; 
+      width: 100%; /* Obliga a usar todo el ancho */
+    }
 
+    .article-main { 
+      flex: 3; /* Le da más peso al texto que a la barra lateral */
+      min-width: 0; /* ¡Truco clave! Evita que el texto se aplaste */
+      max-width: 850px; 
+    }
+
+    .ad-sidebar-sticky { 
+      flex: 1; 
+      min-width: 300px; /* Evita que la columna derecha desaparezca */
+      position: sticky; 
+      top: 100px; 
+    }
     /* TICKER */
     .ticker-wrap { background: #0a0e1a; border-bottom: 1px solid #1e2d4a; overflow: hidden; height: 38px; display: flex; align-items: center; }
     .ticker-label { background: var(--accent); color: #fff; font-size: 11px; font-weight: 800; padding: 5px 15px; z-index: 2; text-transform: uppercase; }
@@ -89,8 +105,12 @@
     .section-header { display: flex; align-items: center; justify-content: space-between; margin: 50px 0 30px; padding-bottom: 15px; border-bottom: 2px solid var(--border); }
     .section-title { font-family: var(--font-display); font-size: 28px; color: var(--white); display: flex; align-items: center; gap: 12px; }
     .section-title::before { content: ''; width: 5px; height: 30px; background: var(--accent); border-radius: 3px; }
-    .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 35px; }
-
+.articles-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+      gap: 30px; 
+      width: 100%; /* Añade esto para que no se colapse */
+    }
     .article-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: 0.4s; display: flex; flex-direction: column; }
     .article-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,95,163,0.15); }
     .article-card img { width: 100%; height: 230px; object-fit: cover; }
@@ -768,27 +788,31 @@ function showCat(category) {
 
 function openArticle(id, updateUrl = true) {
   const art = articles.find(a => a.id == id);
+  if(!art) return;
+  
   const content = document.getElementById('article-view-content');
   content.innerHTML = `
     <div class="article-layout">
       <div class="article-main">
-        <a onclick="showPage('home')" style="color:var(--accent); font-weight:700; cursor:pointer;">← Back to Hub</a>
-        <h1 style="font-family:'DM Serif Display', serif; font-size:48px; margin:20px 0; line-height:1.2;">${art.title}</h1>
+        <a onclick="showPage('home')" style="color:var(--accent); font-weight:700; cursor:pointer; display:inline-block; margin-bottom:20px;">← Back to Hub</a>
+        <h1 style="font-family:'DM Serif Display', serif; font-size:48px; margin-bottom:20px; line-height:1.2; color:var(--text);">${art.title}</h1>
         <p style="color:var(--text3); font-size:14px; margin-bottom:30px;">Written by ${art.author} | Published ${art.date} | ${art.tag}</p>
         
-        <img src="${art.img}" class="article-hero-img" style="width:100%; border-radius:18px; margin-bottom:30px;">
+        <img src="${art.img}" class="article-hero-img" style="width:100%; height:auto; border-radius:18px; margin-bottom:30px; display:block;">
         
-        <div class="article-content">${art.body}</div>
+        <div class="article-content" style="color:var(--text); line-height:1.8; font-size:18px;">
+          ${art.body}
+        </div>
       </div>
 
       <aside class="ad-sidebar-sticky">
         <div style="padding:25px; background:var(--bg2); border-radius:15px; border:1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-            <h4 style="color:var(--white); margin-bottom:15px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid var(--accent); padding-bottom: 10px;">2026 Trend Reports</h4>
+            <h4 style="color:var(--text); margin-bottom:15px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid var(--accent); padding-bottom: 10px;">2026 Trend Reports</h4>
             <ul style="list-style:none; font-size:13px; color:var(--text2); line-height: 1.6;">
-                <li style="margin-bottom:12px;"><a onclick="openArticle(0)" style="color:var(--text2); cursor:pointer;">• BTC $250K Projection</a></li>
-                <li style="margin-bottom:12px;"><a onclick="openArticle(5)" style="color:var(--text2); cursor:pointer;">• Global CBDC Impact</a></li>
-                <li style="margin-bottom:12px;"><a onclick="openArticle(2)" style="color:var(--text2); cursor:pointer;">• DePIN Sector Alpha</a></li>
-                <li><a onclick="openArticle(7)" style="color:var(--text2); cursor:pointer;">• Quantum Defense Guide</a></li>
+                <li style="margin-bottom:12px;"><a onclick="openArticle(0)" style="color:var(--text2); cursor:pointer; text-decoration:none;">• BTC $250K Projection</a></li>
+                <li style="margin-bottom:12px;"><a onclick="openArticle(5)" style="color:var(--text2); cursor:pointer; text-decoration:none;">• Global CBDC Impact</a></li>
+                <li style="margin-bottom:12px;"><a onclick="openArticle(2)" style="color:var(--text2); cursor:pointer; text-decoration:none;">• DePIN Sector Alpha</a></li>
+                <li><a onclick="openArticle(7)" style="color:var(--text2); cursor:pointer; text-decoration:none;">• Quantum Defense Guide</a></li>
             </ul>
         </div>
       </aside>
