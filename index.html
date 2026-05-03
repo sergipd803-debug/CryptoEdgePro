@@ -108,11 +108,45 @@
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 50px; }
 
     /* ===== MOBILE RESPONSIVE ===== */
-    @media (max-width: 1024px) {
-      .article-layout {
-        flex-direction: column !important;
-        gap: 20px !important;
+   @media (max-width: 1024px) {
+      /* 1. Ajustes de layout para artículos */
+      .article-layout { flex-direction: column !important; }
+      .ad-sidebar-sticky { position: static !important; width: 100% !important; }
+      
+      /* 2. Ocultamos el espacio vacío que añadimos en el Paso 1 */
+      .desktop-spacer { display: none !important; }
+
+      /* 3. Mostramos el icono de la hamburguesa ☰ */
+      #mobile-icon { display: block !important; }
+
+      /* 4. Convertimos el menú en una lista vertical flotante */
+      nav { 
+        display: none; /* Se oculta por defecto */
+        flex-direction: column;
+        position: absolute;
+        top: 68px; /* Altura del header de CryptoEdge */
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        z-index: 1000;
       }
+
+      /* 5. Esta clase se activará con JavaScript */
+      nav.mobile-open { display: flex !important; }
+
+      /* 6. Estilo de los enlaces en el móvil */
+      nav a { 
+        width: 100%; 
+        text-align: center; 
+        padding: 15px 0;
+        border-radius: 0;
+        border-bottom: 1px solid #f4f7f9;
+        color: var(--text2);
+      }
+    }
 
       .article-main {
         max-width: 100% !important;
@@ -222,6 +256,7 @@
       <a onclick="showPage('about')">About Us</a>
       <a onclick="showPage('contact')">Contact</a>
     </nav>
+    <div id="mobile-icon" onclick="toggleMobileMenu()" style="display:none; font-size: 30px; cursor: pointer; color: var(--text); margin-left: auto;">☰</div>
     <div style="width:140px; flex-shrink:0;"></div>
   </div>
 </header>
@@ -425,6 +460,21 @@
 </footer>
 
 <script>
+  // Esta función quita o pone la clase 'mobile-open' al menú
+function toggleMobileMenu() {
+  const nav = document.getElementById('main-nav');
+  nav.classList.toggle('mobile-open');
+}
+
+// Esto cierra el menú automáticamente cuando el usuario hace clic en una categoría
+// (Muy útil para que no se quede el menú abierto tapando el contenido)
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('#main-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('main-nav').classList.remove('mobile-open');
+    });
+  });
+});
 const articles = [
   {
     id: 0, tag: "Bitcoin", title: "Bitcoin at $94K: The Institutional Roadmap to $250,000", date: "April 26, 2026", author: "James Hartwell",
