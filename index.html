@@ -785,12 +785,32 @@ window.onpopstate = (event) => {
 
 window.onload = () => {
   document.getElementById('home-grid').innerHTML = articles.map(a => renderCard(a)).join('');
-  
-  const path = window.location.pathname.replace(/^\/|\/$/g, '');
-  if (path && path !== "index.html" && path !== "contact" && path !== "privacy" && path !== "category") {
-    const foundArticle = articles.find(a => slugify(a.title) === path);
-    if (foundArticle) {
-      openArticle(foundArticle.id, false);
+
+  // 1. Recuperamos la URL si venimos del error 404
+  let rawPath = window.location.pathname;
+  const redirect = sessionStorage.getItem('redirectURL');
+
+  if (redirect) {
+    sessionStorage.removeItem('redirectURL');
+    window.history.replaceState(null, null, redirect);
+    rawPath = redirect;
+  }
+
+  // 2. Limpiamos la ruta
+  const path = rawPath.replace(/^\/|\/$/g, '');
+
+  // 3. Decidimos qué abrir
+  if (path && path !== "index.html") {
+    // ¿Es una página fija (contact, privacy, about...)?
+    const staticPages = ['contact', 'privacy', 'about', 'cookies', 'terms'];
+    if (staticPages.includes(path)) {
+      showPage(path, false);
+    } else {
+      // Si no es del menú, buscamos si es un artículo
+      const foundArticle = articles.find(a => slugify(a.title) === path);
+      if (foundArticle) {
+        openArticle(foundArticle.id, false);
+      }
     }
   }
 };
