@@ -141,11 +141,18 @@
         padding: 0 !important; 
       }
 
-      /* 2. Ocultamos el espacio vacío del paso 1 */
-      .desktop-spacer { display: none !important; }
+      /* 2. OCULTA EL HUECO DE 140PX (Esto arregla el pegado) */
+      .desktop-spacer { 
+        display: none !important; 
+      }
 
-      /* 3. Mostramos el icono de la hamburguesa ☰ */
-      #mobile-icon { display: block !important; }
+      /* 3. EMPUJA EL ICONO A LA DERECHA */
+      #mobile-icon { 
+        display: block !important; 
+        margin-left: auto; /* Lo manda a la esquina derecha */
+        padding-right: 10px; /* Un poco de margen con el borde */
+        font-size: 32px;
+      }
 
       /* 4. Menú móvil vertical */
       nav { 
@@ -174,11 +181,15 @@
         margin: 0;
       }
 
-      /* 5. Forzamos la cuadrícula a 1 columna solo en móvil */
+      /* 5. Cuadrícula a 1 columna en móvil */
       .articles-grid {
         grid-template-columns: 1fr !important;
         gap: 20px !important;
       }
+
+      h1 { font-size: 28px !important; }
+      .container { padding: 0 16px !important; }
+    }
 
       /* Ajustes de texto para móvil */
       h1 { font-size: 28px !important; }
@@ -211,7 +222,8 @@
       <a onclick="showPage('contact')">Contact</a>
     </nav>
     <div id="mobile-icon" onclick="toggleMobileMenu()" style="display:none; font-size: 30px; cursor: pointer; color: var(--text); margin-left: auto;">☰</div>
-    <div style="width:140px; flex-shrink:0;"></div>
+  <!-- Le añadimos la clase para poder controlarlo con el CSS -->
+<div style="width:140px; flex-shrink:0;" class="desktop-spacer"></div>
   </div>
 </header>
 
