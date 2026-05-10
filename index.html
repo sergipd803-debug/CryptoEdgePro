@@ -263,33 +263,34 @@
         <div class="form-group"><label>Global HQ</label><p>Financial District, Barcelona / London / Chicago</p></div>
       </div>
       <div class="contact-form">
-        <form action="https://api.web3forms.com/submit" method="POST">
-          
+        
+        <form id="crypto-contact-form">
           <input type="hidden" name="access_key" value="6b8a597c-d484-4724-a644-05c69751de26">
-          
           <input type="hidden" name="subject" value="Nuevo contacto VIP de CryptoEdge">
-          
-          <input type="hidden" name="redirect" value="https://cryptoedgepro.blog/">
 
           <div class="form-group">
             <label>Full Name</label>
             <input type="text" name="name" required placeholder="John Doe">
           </div>
-          
           <div class="form-group">
             <label>Work Email</label>
             <input type="email" name="email" required placeholder="name@company.com">
           </div>
-          
           <div class="form-group">
             <label>Message Content</label>
             <textarea name="message" rows="5" required placeholder="How can we assist you?"></textarea>
           </div>
-          
-          <button type="submit" class="submit-btn">Send Message →</button>
+          <button type="submit" class="submit-btn" id="s-btn">Send Message →</button>
         </form>
+
+        <div id="thank-you-screen" style="display:none; text-align: center; padding: 30px 10px;">
+          <div style="font-size: 60px; margin-bottom: 20px;">✅</div>
+          <h2 style="font-family: var(--font-display); font-size: 32px; color: var(--text); margin-bottom: 15px;">Transmission Secure</h2>
+          <p style="color: var(--text3); margin-bottom: 30px;">Thank you for reaching out. Our global editorial team will review your data and respond shortly.</p>
+          <button onclick="showPage('home')" class="submit-btn" style="width: auto; padding: 12px 30px;">Return to Terminal</button>
         </div>
-        </div>
+
+      </div>
         
       </div>
     </div>
@@ -851,6 +852,55 @@ window.onload = () => {
     }
   }
 };
+  // --- SCRIPT PARA EL FORMULARIO WEB3FORMS ---
+document.getElementById('crypto-contact-form').addEventListener('submit', function(e) {
+  e.preventDefault(); // Evita que la página recargue
+  
+  const form = e.target;
+  const btn = document.getElementById('s-btn');
+  const thankYouScreen = document.getElementById('thank-you-screen');
+  
+  // Efecto visual de "Procesando"
+  btn.innerText = "Transmitting Data...";
+  btn.style.opacity = "0.7";
+  btn.disabled = true;
+  
+  // Recogemos los datos
+  const formData = new FormData(form);
+  const object = Object.fromEntries(formData);
+  const json = JSON.stringify(object);
+
+  // Enviamos los datos silenciosamente
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: json
+  })
+  .then(async (response) => {
+    if (response.status == 200) {
+      // ÉXITO: Ocultamos el formulario y mostramos el mensaje VIP
+      form.style.display = "none";
+      thankYouScreen.style.display = "block";
+      form.reset();
+    } else {
+      // Si algo falla en su servidor
+      btn.innerText = "Error. Try again";
+      btn.style.background = "#ef4444";
+      btn.style.opacity = "1";
+      btn.disabled = false;
+    }
+  })
+  .catch(error => {
+    // Si falla el internet del usuario
+    console.log(error);
+    btn.innerText = "Connection Error";
+    btn.style.background = "#ef4444";
+    btn.disabled = false;
+  });
+});
 </script>
 </body>
 </html>
