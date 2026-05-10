@@ -1,80 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://cryptoedgepro.blog/</loc></url>
+  <url><loc>https://cryptoedgepro.blog/about</loc></url>
+  <url><loc>https://cryptoedgepro.blog/contact</loc></url>
+  <url><loc>https://cryptoedgepro.blog/privacy</loc></url>
+  <url><loc>https://cryptoedgepro.blog/cookies</loc></url>
+  <url><loc>https://cryptoedgepro.blog/terms</loc></url>
 
-  <!-- Homepage -->
-  <url>
-    <loc>https://cryptoedgepro.blog/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <!-- Main category sections -->
-  <url>
-    <loc>https://cryptoedgepro.blog/bitcoin/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://cryptoedgepro.blog/defi/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://cryptoedgepro.blog/investing/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://cryptoedgepro.blog/altcoins/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Static / legal pages -->
-  <url>
-    <loc>https://cryptoedgepro.blog/about/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://cryptoedgepro.blog/contact/</loc>
-    <lastmod>2026-04-30</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://cryptoedgepro.blog/privacy/</loc>
-    <lastmod>2026-04-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
-  <url>
-    <loc>https://cryptoedgepro.blog/cookies/</loc>
-    <lastmod>2026-04-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
-  <url>
-    <loc>https://cryptoedgepro.blog/terms/</loc>
-    <lastmod>2026-04-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
+  <url><loc>https://cryptoedgepro.blog/bitcoin-at-94k-the-institutional-roadmap-to-250000</loc></url>
+  <url><loc>https://cryptoedgepro.blog/institutional-defi-v4-the-1-trillion-milestone</loc></url>
+  <url><loc>https://cryptoedgepro.blog/solana-firedancer-live-analysis-of-640000-tps</loc></url>
+  <url><loc>https://cryptoedgepro.blog/hedging-against-the-2026-sticky-inflation-spike</loc></url>
+  <url><loc>https://cryptoedgepro.blog/ethereum-layer-3s-the-fractal-scaling-revolution</loc></url>
+  <url><loc>https://cryptoedgepro.blog/stablecoin-act-2026-end-of-crypto-shadow-banking</loc></url>
+  <url><loc>https://cryptoedgepro.blog/digital-identity-the-2026-pivot-to-utility</loc></url>
+  <url><loc>https://cryptoedgepro.blog/the-post-quantum-migration-is-your-crypto-safe</loc></url>
+  <url><loc>https://cryptoedgepro.blog/rise-of-ai-agents-the-new-institutional-whales-of-the-2026-market</loc></url>
+  <url><loc>https://cryptoedgepro.blog/lightning-network-hits-100000-btc-capacity-the-final-victory-for-global-micro-payments</loc></url>
+  <url><loc>https://cryptoedgepro.blog/real-world-assets-rwa-dominance-the-tokenization-of-global-property-and-sovereign-debt</loc></url>
+  <url><loc>https://cryptoedgepro.blog/polkadot-3-0-the-agile-coretime-revolution-and-the-end-of-parachain-auctions</loc></url>
+  <url><loc>https://cryptoedgepro.blog/decentralized-ai-training-breaking-the-big-tech-monopoly-on-intelligence</loc></url>
+  <url><loc>https://cryptoedgepro.blog/the-supercycle-vs-the-halving-myth-why-the-2026-market-architecture-is-different</loc></url>
+  <url><loc>https://cryptoedgepro.blog/the-rise-of-biometric-cold-storage-and-the-death-of-the-seed-phrase</loc></url>
+  <url><loc>https://cryptoedgepro.blog/bitcoin-mining-in-2026-the-esg-revolution-and-stranded-energy-capture</loc></url>
+  <url><loc>https://cryptoedgepro.blog/chainlink-ccip-the-global-standard-for-bank-tokenization-and-inter-bank-liquidity</loc></url>
 </urlset>
