@@ -208,6 +208,15 @@
 
       h1 { font-size: 28px !important; }
       .container { padding: 0 16px !important; }
+      /* --- ARREGLO CONTACTO MÓVIL --- */
+      .contact-wrap {
+        grid-template-columns: 1fr !important; /* Pasa de 2 columnas a 1 sola */
+        gap: 30px !important;
+        margin: 40px auto !important;
+      }
+      .contact-form, .privacy-content {
+        padding: 30px 20px !important; /* Reduce el relleno para que los inputs respiren */
+      }
     } /* AQUÍ SE CIERRA EL MEDIA 1024 */
 
     @media (max-width: 480px) {
