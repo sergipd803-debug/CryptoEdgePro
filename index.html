@@ -805,39 +805,28 @@ function renderCard(a) {
     </div>
   `;
 }
-async function handleContact(e) {
-  e.preventDefault();
-  const form = e.target;
-  const btn = document.getElementById('s-btn');
-  const successMsg = document.getElementById('contact-success');
-  const errorMsg = document.getElementById('contact-error');
+<form action="https://formsubmit.co/sergipd803@gmail.com" method="POST">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://fechasmagicas.blog/contact">
+  <input type="hidden" name="_subject" value="Nuevo contacto de CryptoEdge">
 
-  btn.innerText = "Transmitting...";
-  btn.disabled = true;
-
-  const formData = new FormData(form);
-
-  try {
-    const response = await fetch("https://formsubmit.co/ajax/sergipd803@gmail.com", {
-      method: "POST",
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    });
-
-    if (response.ok) {
-      btn.innerText = "Transmission Secure!";
-      btn.style.background = "#10b981";
-      successMsg.style.display = "block";
-      form.reset();
-    } else {
-      throw new Error();
-    }
-  } catch (err) {
-    btn.innerText = "Error - Try Again";
-    btn.disabled = false;
-    errorMsg.style.display = "block";
-  }
-}
+  <div class="form-group">
+    <label>Full Name</label>
+    <input type="text" name="name" required placeholder="John Doe">
+  </div>
+  
+  <div class="form-group">
+    <label>Work Email</label>
+    <input type="email" name="email" required placeholder="name@company.com">
+  </div>
+  
+  <div class="form-group">
+    <label>Message Content</label>
+    <textarea name="message" rows="5" required placeholder="How can we assist you?"></textarea>
+  </div>
+  
+  <button type="submit" class="submit-btn">Send Message →</button>
+</form>
 
 window.onpopstate = (event) => {
   if (event.state && event.state.articleId !== undefined) {
