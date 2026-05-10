@@ -837,7 +837,7 @@ async function handleContact(e) {
       successMsg.style.display = "block";
       form.reset(); 
     } else {
-      throw new Error("FormSubmit Error");
+      throw new Error("Error");
     }
   } catch (error) {
     btn.innerText = "Send Message →";
