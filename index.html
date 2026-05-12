@@ -809,11 +809,15 @@ function showPage(pageId, updateUrl = true) {
 }
 
 function showCat(category) {
-  const filtered = articles.filter(a => a.tag === category);
+  // Filtramos y ORDENAMOS antes de mostrar
+  let filtered = articles.filter(a => a.tag === category);
+  filtered.sort((a, b) => new Date(b.date) - new Date(a.date)); // <--- La magia está aquí
+  
   document.getElementById('cat-title').innerText = category + " Intelligence 2026";
   const grid = document.getElementById('cat-grid');
   grid.innerHTML = filtered.map(a => renderCard(a)).join('');
   showPage('category');
+
 }
 
 function openArticle(id, updateUrl = true) {
