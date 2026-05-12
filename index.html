@@ -807,6 +807,7 @@ function showPage(pageId, updateUrl = true) {
     window.scrollTo(0, 0);
   }, 10);
 }
+
 function showCat(category) {
   // Filtramos y ORDENAMOS antes de mostrar
   let filtered = articles.filter(a => a.tag === category);
@@ -816,7 +817,6 @@ function showCat(category) {
   const grid = document.getElementById('cat-grid');
   grid.innerHTML = filtered.map(a => renderCard(a)).join('');
   showPage('category');
-}
 
 }
 
