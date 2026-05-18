@@ -927,13 +927,15 @@ function slugify(text) {
 }
 
 // LOGICA DE NAVEGACION ACTUALIZADA PARA SEO, URLS Y SCROLL INFALIBLE
+// NUEVA FUNCIÓN SHOWPAGE
 function showPage(pageId, updateUrl = true) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + pageId).classList.add('active');
   document.querySelectorAll('#main-nav a').forEach(a => a.classList.remove('active'));
   
   if (updateUrl) {
-    const url = pageId === 'home' ? '/' : '/' + pageId;
+    // Aquí está la magia: usamos "?page=" en lugar de "/"
+    const url = pageId === 'home' ? '/' : '/?page=' + pageId;
     window.history.pushState({page: pageId}, '', url);
   }
   
@@ -992,11 +994,11 @@ function openArticle(id, updateUrl = true) {
   showPage('article', false);
   
   if (updateUrl) {
-    window.history.pushState({articleId: id}, art.title, '/' + slugify(art.title));
+    // Hemos borrado el slugify y puesto el "?id="
+    window.history.pushState({articleId: id}, art.title, '/?id=' + id);
   }
   document.title = art.title + " | CryptoEdge Pro";
 }
-
 function renderCard(a) {
   return `
     <div class="article-card" onclick="openArticle(${a.id})">
@@ -1021,6 +1023,7 @@ window.onpopstate = (event) => {
   }
 };
 
+// NUEVO CEREBRO: Lector de URLs seguras para GitHub Pages
 window.onload = () => {
   // --- SISTEMA DE ORDENACIÓN AUTOMÁTICA POR FECHA ---
   const sortedArticles = [...articles].sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -1029,27 +1032,21 @@ window.onload = () => {
   document.getElementById('home-grid').innerHTML = sortedArticles.map(a => renderCard(a)).join('');
   // -------------------------------------------------
 
-  let rawPath = window.location.pathname;
-  const redirect = sessionStorage.getItem('redirectURL');
+  // 1. Leemos la URL buscando el "?"
+  const params = new URLSearchParams(window.location.search);
+  const articleId = params.get('id');
+  const pageId = params.get('page');
 
-  if (redirect) {
-    sessionStorage.removeItem('redirectURL');
-    window.history.replaceState(null, null, redirect);
-    rawPath = redirect;
-  }
-
-  const path = rawPath.replace(/^\/|\/$/g, '');
-
-  if (path && path !== "index.html") {
-    const staticPages = ['contact', 'privacy', 'about', 'cookies', 'terms'];
-    if (staticPages.includes(path)) {
-      showPage(path, false);
-    } else {
-      const foundArticle = articles.find(a => slugify(a.title) === path);
-      if (foundArticle) {
-        openArticle(foundArticle.id, false);
-      }
-    }
+  // 2. Decidimos qué pantalla mostrar sin que GitHub de error 404
+  if (articleId !== null) {
+    // Si la URL tiene un ?id=X, abrimos ese artículo
+    openArticle(articleId, false);
+  } else if (pageId !== null) {
+    // Si la URL tiene un ?page=X, abrimos esa página estática (ej: privacy)
+    showPage(pageId, false);
+  } else {
+    // Si no hay parámetros, mostramos el Home
+    showPage('home', false);
   }
 };
   // --- SCRIPT PARA EL FORMULARIO WEB3FORMS ---
